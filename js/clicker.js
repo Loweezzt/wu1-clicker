@@ -1,7 +1,7 @@
 /* Med document.queryselector(selector) kan vi hämta
  * de element som vi behöver från html dokumentet.
  * Vi spearar elementen i const variabler då vi inte kommer att
- * ändra dess värden.
+ * ändra dess värden.math
  * Läs mer:
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
  * https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
@@ -10,8 +10,8 @@
 const clickerButton = document.querySelector('#game-button');
 const moneyTracker = document.querySelector('#money');
 const mpsTracker = document.querySelector('#mps'); // money per second
-const mpcTracker = document.querySelector('#mpc'); // money per click
-const upgradesTracker = document.querySelector('#upgrades');
+const mpcTracker = document.querySelector('#mpc'); // money per click 
+//const upgradesTracker = document.querySelector('#upgrades');
 const upgradeList = document.querySelector('#upgradelist');
 const msgbox = document.querySelector('#msgbox');
 const audioAchievement = document.querySelector('#swoosh');
@@ -93,7 +93,7 @@ function step(timestamp) {
     moneyTracker.textContent = Math.round(money);
     mpsTracker.textContent = moneyPerSecond;
     mpcTracker.textContent = moneyPerClick;
-    upgradesTracker.textContent = acquiredUpgrades;
+    //upgradesTracker.textContent = acquiredUpgrades;
 
     if (timestamp >= last + 1000) {
         money += moneyPerSecond;
@@ -174,12 +174,12 @@ upgrades = [
     },
     {
         name: 'Bank Printer',
-        cost: 100,
+        cost: 500,
         amount: 10,
     },
     {
         name: 'Bank Owner',
-        cost: 1000,
+        cost: 5000,
         amount: 100,
     },
 ];
@@ -219,8 +219,8 @@ function createCard(upgrade) {
         if (money >= upgrade.cost) {
             acquiredUpgrades++;
             money -= upgrade.cost;
-            upgrade.cost *= 1.5;
-            cost.textContent = '' + upgrade.cost + '€';
+            upgrade.cost *= 1.3;
+            cost.textContent = '' + Math.round(upgrade.cost) + '€'; 
             moneyPerSecond += upgrade.amount ? upgrade.amount : 0;
             moneyPerClick += upgrade.clicks ? upgrade.clicks : 0;
             message('Bought!', 'success');
